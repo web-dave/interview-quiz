@@ -53,7 +53,7 @@ console.log(x.fame);
       "'null' is written to the console",
       'An empty string is written to the console',
     ],
-    solution: 0,
+    solution: 1,
   },
   {
     question: 'Which of the following is NOT a logical operator',
@@ -127,7 +127,7 @@ if (x && console.log("hello")) {
       'Promise.resolve(1)',
       'Promise(1)',
     ],
-    solution: null,
+    solution: 2,
   },
   {
     question: 'What will be logged to the console',
@@ -191,7 +191,7 @@ console.log({a, b});
       'Object { a: 2, b: 1 }',
       'Object { a: 2, b: [1, 2, 3] }',
     ],
-    solution: 0,
+    solution: 2,
   },
   {
     question: 'What is not a keyword related to the ES2015 module format',
@@ -208,11 +208,11 @@ console.log({a, b});
       'Closures',
       'The global window object',
     ],
-    solution: 3,
+    solution: 1,
   },
   {
     question:
-      'Which browser feature would you use from the list below to enable online experience',
+      'Which browser feature would you use from the list below to enable offline experience',
     task: ``,
     answers: ['Service Worker', ' Web Worker', 'Webpack', 'localStorage'],
     solution: 0,
@@ -249,7 +249,7 @@ console.log({a, b});
       '<a href="https://www.google.com"><em><h1>Google</h1></em></a>',
       '<em><a href="https://www.google.com"><h1>Google</h1></a></em>',
     ],
-    solution: null,
+    solution: 0,
   },
   {
     question: 'Which color would you pick for grey',
@@ -291,7 +291,7 @@ Top: 10px, Bottom: 5px, Left: 15px, Right: 10px
 </span>
 `,
     answers: ['Green', ' Purple', 'Yellow', 'Red'],
-    solution: null,
+    solution: 2,
   },
   {
     question: 'What is going on in this CSS selector',
@@ -302,7 +302,7 @@ Top: 10px, Bottom: 5px, Left: 15px, Right: 10px
       'Select anchor links that are decedents of an unordered list that is a direct child of an element with an id "contacts"',
       'Select anchor links that are decedents of an unordered list that is a decendent of an element with a class "contacts"',
     ],
-    solution: null,
+    solution: 1,
   },
   {
     question:
@@ -398,7 +398,8 @@ Top: 10px, Bottom: 5px, Left: 15px, Right: 10px
     solution: 2,
   },
   {
-    question: 'How can you create a service in Angular 2+',
+    question:
+      'How can you mark a service as available to be provided and injected as a dependency in Angular 2+.',
     task: ``,
     answers: [
       'Using `@Injectable()` decorator',
@@ -416,7 +417,7 @@ Top: 10px, Bottom: 5px, Left: 15px, Right: 10px
   },
   {
     question:
-      'When writing a unit test using jasmine, how can you spy on a method of an object and provide a fake return value',
+      'When writing a unit test using jasmine, how can you spy on a method of an object and provide a fake return value?',
     task: ``,
     solution: 0,
     answers: [
@@ -424,6 +425,24 @@ Top: 10px, Bottom: 5px, Left: 15px, Right: 10px
       'spyOn(foo.bar).and.returnValue(1);',
       'spyOn(foo, "bar").and.return(1);',
       'spyOn(foo.bar).and.return(1);',
+    ],
+  },
+  {
+    question: 'What would be the output?',
+    task: `
+    var arr = [08, 15, 47, 11];
+    for (var i = 0; i <= arr.length; i++) {
+      setTimeout(function () {
+        console.log('Index: ' + i + ', element:' + arr[i]);
+      }, 3000);
+    }
+    `,
+    solution: 0,
+    answers: [
+      '5 times: "Index: 5, element:undefined"',
+      '4 times: "Index: 4, element:undefined"',
+      'Index: 0, element: 1, Index: 1, element: 2, Index: 2, element: 3, Index: 3, element: 4, Index: 4, element: undefined',
+      '5 times: "Index: 4, element:undefined"',
     ],
   },
 ];
