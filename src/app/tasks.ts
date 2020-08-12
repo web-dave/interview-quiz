@@ -1,13 +1,8 @@
-// Frontend Developer Multiple Choice – *************** – task 1 of 1
-// Task description
-// Time: 25 min
-// No google etc.
-
 export interface ITask {
   question: string;
   task: string;
   answers: [string, string, string, string];
-  solution: -1 | 0 | 1 | 2 | 3;
+  solution: 0 | 1 | 2 | 3;
 }
 export const tasks: ITask[] = [
   {
