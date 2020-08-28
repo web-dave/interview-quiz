@@ -1,0 +1,30 @@
+<h2 class="question">{{ task.question }}</h2>
+<pre>{{ task.task }}</pre>
+
+<div class="card-container">
+  <!-- <div
+    class="card"
+    [ngClass]="i | result: rightAnswer:yourAnswer"
+    *ngFor="let answer of task.answers; let i = index"
+    (click)="select(pos, i)"
+  >
+    <p>{{ answer }}</p>
+  </div> -->
+  <table>
+    <tr>
+      <td>
+        <h3>{{ task.question }}</h3>
+        <pre>{{ task.task }}</pre>
+        <h4>Answer:</h4>
+        <div
+          *ngFor="let answer of task.answers; let i = index"
+          [ngClass]="i | result: rightAnswer:yourAnswer"
+          (click)="select(pos, i)"
+          class="answer"
+        >
+          {{ answer }}
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>

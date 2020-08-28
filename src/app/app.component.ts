@@ -1,42 +1,43 @@
-import { Component } from '@angular/core';
-import { tasks } from './tasks';
-import { of } from 'rxjs';
-import { tap, delay } from 'rxjs/operators';
+import { Component, OnInit } from '@angular/core';
+import { tasks, ITask, ISolution } from './tasks';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'interview-quiz';
   pos = 0;
-  results: { task: number; solved: boolean }[] = [];
-  tasks = tasks;
-  task = tasks[this.pos];
-  yourAnswer: null | 0 | 1 | 2 | 3 = null;
-  rightAnswer: -1 | 0 | 1 | 2 | 3 = -1;
+  results: { task: number; solved: boolean; yourAnswer: ISolution }[] = [];
+  taskList = tasks;
+  task: ITask;
+  // yourAnswer: null | ISolution = null;
+  // rightAnswer: -1 | ISolution = -1;
+  score: number = 0;
 
-  next(task, i) {
-    this.results.push({ task, solved: i === this.task.solution });
-    this.pos++;
-    of({ task, solved: i === this.task.solution })
-      .pipe(
-        tap((data) => {
-          this.rightAnswer = this.task.solution;
-          this.yourAnswer = i;
-          this.results.push({ task, solved: i === this.task.solution });
-        }),
-        delay(600),
-        tap((data) => {
-          this.rightAnswer = -1;
-          this.yourAnswer = null;
-        }),
-        delay(300)
-      )
-      .subscribe((data) => {
-        this.pos++;
-        this.task = tasks[this.pos];
-      });
+  ngOnInit() {
+    this.task = this.taskList[this.pos];
+  }
+  next(data: { task: number; i: ISolution }) {
+    this.results.push({
+      task: data.task,
+      solved: data.i === this.task.solution,
+      yourAnswer: data.i,
+    });
+    this.score = this.results.filter((r) => r.solved).length;
+    console.log(this.results, this.score);
+
+    if (this.pos + 1 < this.taskList.length) {
+      this.pos++;
+      this.task = this.taskList[this.pos];
+    }
+  }
+  reset() {
+    this.pos = 0;
+    this.results = [];
+    // yourAnswer: null | ISolution = null;
+    // rightAnswer: -1 | ISolution = -1;
+    this.score = 0;
   }
 }

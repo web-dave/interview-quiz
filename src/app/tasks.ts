@@ -2,8 +2,10 @@ export interface ITask {
   question: string;
   task: string;
   answers: [string, string, string, string];
-  solution: 0 | 1 | 2 | 3;
+  solution: ISolution;
 }
+
+export type ISolution = 0 | 1 | 2 | 3;
 export const tasks: ITask[] = [
   {
     question:

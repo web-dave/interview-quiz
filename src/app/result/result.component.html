@@ -1,0 +1,15 @@
+<h2 class="question">{{ resultText }}{{ score }}</h2>
+
+<div class="card-container">
+  <table>
+    <tr *ngFor="let task of tasks">
+      <td>
+        <h3>{{ task.question }}</h3>
+        <pre>{{ task.task }}</pre>
+        <h4>Answer:</h4>
+        <div>{{ task.answers[task.solution] }}</div>
+        <hr />
+      </td>
+    </tr>
+  </table>
+</div>

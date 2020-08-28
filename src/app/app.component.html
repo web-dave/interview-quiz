@@ -8,10 +8,10 @@
   <span>Quiz time</span>
   <div class="spacer"></div>
   <a
-    aria-label="Angular on twitter"
+    aria-label="Webdave on twitter"
     target="_blank"
     rel="noopener"
-    href="https://twitter.com/angular"
+    href="https://twitter.com/webdave_de"
     title="Twitter"
   >
     <svg
@@ -33,7 +33,7 @@
 <div class="content" role="main">
   <!-- Highlight Card -->
   <div class="card highlight-card card-small">
-    <svg
+    <!-- <svg
       id="rocket"
       alt="Rocket Ship"
       xmlns="http://www.w3.org/2000/svg"
@@ -72,9 +72,9 @@
           />
         </g>
       </g>
-    </svg>
+    </svg> -->
 
-    <span>{{ title }} {{ pos + 1 }}/{{ tasks.length }} </span>
+    <span>{{ title }} {{ pos + 1 }}/{{ taskList.length }} </span>
 
     <svg
       id="rocket-smoke"
@@ -93,24 +93,20 @@
       />
     </svg>
   </div>
-
   <!-- Resources -->
-  <h2>{{ task.question }}</h2>
-  <pre>{{ task.task }}</pre>
+  <app-task
+    *ngIf="results.length < taskList.length; else result"
+    [task]="task"
+    [pos]="pos"
+    (next)="next($event)"
+  ></app-task>
+  <ng-template #result>
+    <app-result
+      [score]="score / results.length | percent"
+      [tasks]="taskList | filter: results"
+    ></app-result>
+  </ng-template>
 
-  <div class="card-container">
-    <div
-      class="card"
-      [ngClass]="{
-        correct: i === rightAnswer,
-        wrong: i !== rightAnswer && i === yourAnswer
-      }"
-      *ngFor="let answer of task.answers; let i = index"
-      (click)="next(pos, i)"
-    >
-      <p>{{ answer }}</p>
-    </div>
-  </div>
   <!-- Footer -->
   <footer>
     Love it?&nbsp;
